@@ -62,7 +62,7 @@ struct PointsView: View {
                 HStack {
                     Text("Level \(model.state.level)")
                     Spacer()
-                    Text("Level \(model.state.level + 1)").opacity(0.6)
+                    Text("\(model.state.pointsToNextLevel) to Level \(model.state.level + 1)").opacity(0.6)
                 }
                 .font(.system(.subheadline, design: .rounded).weight(.bold))
                 ProgressView(value: levelProgress).tint(Ink.iris)
@@ -71,7 +71,7 @@ struct PointsView: View {
         .frame(maxWidth: .infinity)
         .padding(.vertical, 8)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(book.total) points. Level \(model.state.level), \(Int(levelProgress * 100)) percent to the next.")
+        .accessibilityLabel("\(book.total) points. Level \(model.state.level). \(model.state.pointsToNextLevel) more points to level \(model.state.level + 1).")
     }
 
     private var todayRow: some View {

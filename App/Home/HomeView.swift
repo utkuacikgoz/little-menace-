@@ -80,8 +80,9 @@ struct HomeView: View {
                 VStack {
                     topBar
                     Spacer()
-                    if model.showNamePrompt { NamePrompt() }
-                    else if model.showReminderOffer { ReminderOffer() }
+                    // The play picker opens in the same spot, so the cards step aside while it's open.
+                    if model.showNamePrompt && !showPlay { NamePrompt() }
+                    else if model.showReminderOffer && !showPlay { ReminderOffer() }
                     controls(mouth: mouth)
                 }
                 .padding(.horizontal, 16)

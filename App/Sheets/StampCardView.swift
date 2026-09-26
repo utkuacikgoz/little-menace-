@@ -71,11 +71,16 @@ struct StampCardView: View {
                         Image(systemName: "arrow.up.circle.fill")
                         Text("\(s.level)").font(.system(.title2, design: .rounded).weight(.heavy))
                         Spacer()
+                        Text("\(s.pointsToNextLevel) to Level \(s.level + 1)")
+                            .font(.system(.subheadline, design: .rounded).weight(.bold))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
+                            .opacity(0.7)
                     }
                     ProgressView(value: levelProgress(s)).tint(Ink.body)
                 }
                 .accessibilityElement(children: .ignore)
-                .accessibilityLabel("Level \(s.level), \(Int(levelProgress(s) * 100)) percent to the next")
+                .accessibilityLabel("Level \(s.level). \(s.pointsToNextLevel) more points to level \(s.level + 1).")
 
                 // Discoveries: found ones show their icon, the rest are mysteries.
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 5), spacing: 14) {

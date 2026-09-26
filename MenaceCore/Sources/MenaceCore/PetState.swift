@@ -205,6 +205,9 @@ public struct PetState: Codable, Equatable, Sendable {
 
     public var isAsleep: Bool { napStartedAt != nil }
     public var level: Int { Tuning.level(forXP: xp) }
+    /// Still to earn before the next level. Every gain adds to XP and points alike, so this is
+    /// also how many more points the player needs to earn.
+    public var pointsToNextLevel: Int { max(0, Tuning.xpForLevel(level + 1) - xp) }
 
     enum CodingKeys: String, CodingKey {
         case name, namePromptShown, recentLines, createdAt, lastSimulated, needs, napStartedAt, pendingWake, xp, discoveries,

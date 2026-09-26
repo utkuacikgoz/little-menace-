@@ -141,6 +141,14 @@ final class PointsTests: XCTestCase {
         XCTAssertTrue(g.state.howToPlayShown)
     }
 
+    func testPointsToNextLevel() {
+        var s = PetState(now: monday)
+        XCTAssertEqual(s.pointsToNextLevel, Tuning.xpForLevel(2))
+        s.xp = Tuning.xpForLevel(4) + 10
+        XCTAssertEqual(s.level, 4)
+        XCTAssertEqual(s.pointsToNextLevel, Tuning.xpForLevel(5) - s.xp)
+    }
+
     func testEveryReasonHasARule() {
         for r in PointReason.allCases {
             XCTAssertFalse(r.rule.isEmpty)
