@@ -446,6 +446,7 @@ private struct NamePrompt: View {
         .padding(12)
         .background(Ink.eye, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
         .padding(.bottom, 12)
+        .environment(\.colorScheme, .light) // cream card: keep the placeholder and caret dark in Dark Mode
         .transition(.move(edge: .bottom).combined(with: .opacity))
     }
 }
@@ -477,6 +478,7 @@ private struct ReminderOffer: View {
         .padding(16)
         .background(Ink.eye, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
         .padding(.bottom, 12)
+        .environment(\.colorScheme, .light) // cream card: keep the placeholder and caret dark in Dark Mode
         .transition(.move(edge: .bottom).combined(with: .opacity))
     }
 
